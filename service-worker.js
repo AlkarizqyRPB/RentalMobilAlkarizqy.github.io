@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'rental-mobil-cache-v1';
+const CACHE_NAME = 'rental-mobil-cache';
 const urlsToCache = [
   '/',
   'index.html',
