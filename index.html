@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alkarizqy Restu Pribadi Budianto</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="img/pl3j_xpfm_210723.jpg" />
+  <link rel="apple-touch-icon" href="img/pl3j_xpfm_210723.jpg">
+
+</head>
+
+<body>
+  <!-- Contoh dengan elemen div -->
+  <div id="splashScreen">
+    <img src="img/pl3j_xpfm_210723.jpg" alt="Splash Screen">
+  </div>
+
+  <h1>Selamat Datang di My Rental</h1>
+
+  <!-- Content -->
+  <section id="content">
+    <div class="card-deck">
+      <div class="card">
+        <img src="img/67104.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Avanza</h5>
+          <p class="card-text">Avanza tahun 2023, mesin mulus, siap pakai.</p>
+          <a href="avanza.html" class="btn btn-primary">Lihat Kondisi Mobil</a>
+          <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/64366.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Xenia</h5>
+          <p class="card-text">Xenia tahun 2006, masih bisa dipakai walau bensin boros.</p>
+          <a href="xenia.html" class="btn btn-primary">Lihat Kondisi Mobil</a>
+          <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/64374.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Apv</h5>
+          <p class="card-text">Apv tahun 2016, bekas pakai Leonel Messi.</p>
+          <a href="avp.html" class="btn btn-primary">Lihat Kondisi Mobil</a>
+          <p class="card-text"><small class="text-muted">Diposting 2 Menit Lalu</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Operasi -->
+  <div class="container">
+    <div class="Operation">
+      <fieldset>
+        <legend>Tambah Data Pesanan</legend>
+        <form id="FormTambah">
+          <input type="text" id="namaPelanggan" placeholder="Masukan Nama Pelanggan" required />
+          <select id="jenisMobil" required>
+            <option value="Avanza">Avanza</option>
+            <option value="Xenia">Xenia</option>
+            <option value="Apv">Apv</option>
+          </select>
+          <select name="lamaSewa" id="lamaSewa">
+            <option value="1hari">1 Hari</option>
+            <option value="3hari">3 Hari</option>
+            <option value="5hari">5 Hari</option>
+            <option value="7hari">7 Hari</option>
+          </select>
+          <button type="submit">Tambah</button>
+        </form>
+      </fieldset>
+    </div>
+
+    <h2>Data Pesanan</h2>
+    <table id="rentalTable" border="1">
+      <tr>
+        <th>Nama Pelanggan</th>
+        <th>Jenis Mobil</th>
+        <th>Lama Sewa</th>
+        <th>Harga</th>
+        <th>Aksi</th>
+      </tr>
+    </table>
+
+    <h2>Edit Data Pesanan</h2>
+    <form id="editForm">
+      <input type="hidden" id="editId">
+      <input type="text" id="editNamaPelanggan" placeholder="Nama Pelanggan" required />
+      <select id="editJenisMobil" required>
+        <option value="Avanza">Avanza</option>
+        <option value="Xenia">Xenia</option>
+        <option value="Apv">Apv</option>
+      </select>
+      <select name="editHari" id="editHari">
+        <option value="1hari">1 Hari</option>
+        <option value="3hari">3 Hari</option>
+        <option value="5hari">5 Hari</option>
+        <option value="7hari">7 Hari</option>
+      </select>
+      <button type="submit">Simpan Perubahan</button>
+      <button type="button" id="cancelEdit">Batal</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 Alkarizqy Restu Pribadi Budianto. All rights reserved.</p>
+  </footer>
+
+  <script src="fungsi.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+    }
+  </script>
+  <!-- Di dalam konten HTML -->
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      // Mencegah tampilan prompt instalasi otomatis oleh browser
+      event.preventDefault();
+
+      // Menyimpan event untuk ditampilkan nanti
+      deferredPrompt = event;
+
+      // Membuat fungsi untuk menampilkan prompt instalasi
+      function showInstallPrompt() {
+        // Mengecek apakah ada deferredPrompt yang tersedia
+        if (deferredPrompt) {
+          // Memicu prompt instalasi
+          deferredPrompt.prompt();
+
+          // Menangani hasil dari prompt instalasi
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the A2HS prompt');
+            } else {
+              console.log('User dismissed the A2HS prompt');
+            }
+
+            // Menetapkan kembali nilai deferredPrompt agar tidak dapat digunakan lagi
+            deferredPrompt = null;
+          });
+        }
+      }
+
+      // Menampilkan prompt instalasi setelah beberapa detik
+      setTimeout(showInstallPrompt, 8000);
+    });
+  </script>
+
+</body>
+
+</html>
