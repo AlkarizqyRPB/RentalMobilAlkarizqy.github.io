@@ -8,9 +8,23 @@
   "theme_color": "#4d8ccb",
   "icons": [
     {
+      "purpose": "maskable",
+      "sizes": "512x512",
       "src": "img/pl3j_xpfm_210723.jpg",
-      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "icon.png",
       "type": "image/png"
     }
+  ],
+  "orientation": "portrait",
+  "dir": "auto",
+  "lang": "id",
+  "display_override": [
+    "standalone",
+    "window-controls-overlay"
   ]
 }

@@ -1,22 +1,23 @@
 // service-worker.js
+const CACHE_NAME = 'rental-mobil-cache-v1';
+const urlsToCache = [
+  '/',
+  'index.html',
+  'style.css',
+  'script.js',
+  // tambahkan file-file lain yang perlu di-cache
+];
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open('my-cache').then((cache) => {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/styles.css',
-        '/fungsi.js',
-        // ...tambahkan file lain yang perlu di-cache
-      ]);
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(urlsToCache))
   );
 });
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+    caches.match(event.request)
+      .then((response) => response || fetch(event.request))
   );
 });
