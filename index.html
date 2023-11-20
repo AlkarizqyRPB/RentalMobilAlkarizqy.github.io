@@ -116,7 +116,7 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then((registration) => {
           console.log('Service Worker registered with scope:', registration.scope);
         })
@@ -157,7 +157,7 @@
       }
 
       // Menampilkan prompt instalasi setelah beberapa detik
-      setTimeout(showInstallPrompt, 8000);
+      setTimeout(showInstallPrompt, 3000);
     });
   </script>
 </body>
