@@ -1,28 +1,19 @@
 {
   "name": "My Rental App",
-  "short_name": "AppRentalMobil",
+  "short_name": "RentalApp",
   "description": "Aplikasi Rental Mobil",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#4d8ccb",
   "theme_color": "#4d8ccb",
+  "orientation": "portrait",
   "icons": [
     {
-      "purpose": "maskable",
-      "sizes": "512x512",
-      "src": "img/pl3j_xpfm_210723.jpg",
-      "type": "image/jpg"
-    },
-    {
-      "purpose": "any",
-      "sizes": "512x512",
-      "src": "img/pl3j_xpfm_210723.jpg",
-      "type": "image/jpg"
+      "src": "img/20057044_4200_1_06.png",
+      "sizes": "192x192",
+      "type": "image/png"
     }
   ],
-  "orientation": "portrait",
-  "dir": "auto",
-  "lang": "id",
   "display_override": [
     "standalone",
     "window-controls-overlay"

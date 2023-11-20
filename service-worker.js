@@ -1,53 +1,21 @@
-// service-worker.js
-const CACHE_NAME = 'rental-mobil-cache';
-const urlsToCache = [
-  '/RentalMobilAlkarizqy.github.io/',
-  'index.html',
-  'style.css',
-  'script.js',
-  // tambahkan file-file lain yang perlu di-cache
-];
-
-self.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  console.log("masuk");
-  deferredPrompt = e;
-  showInstallPromotion();
-});
-
-self.addEventListener("install", function (event) {
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(urlsToCache);
+    caches.open('my-cache').then((cache) => {
+      return cache.addAll([
+        '/',
+        '/index.html',
+        '/styles.css',
+        '/fungsi.js',
+        // ...tambahkan file lain yang perlu di-cache
+      ]);
     })
-      .then(self.skipWaiting())
   );
 });
 
-self.addEventListener("fetch", function (event) {
+self.addEventListener('fetch', (event) => {
   event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.open(CACHE_NAME).then((cache) => {
-        return cache.match(event.request);
-      });
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
     })
-  );
-});
-
-self.addEventListener("activate", function (event) {
-  event.waitUntil(
-    caches
-      .keys()
-      .then((keyList) => {
-        return Promise.all(
-          keyList.map((key) => {
-            if (key !== CACHE_NAME) {
-              console.log("[ServiceWorker] Hapus cache lama", key);
-              return caches.delete(key);
-            }
-          })
-        );
-      })
-      .then(() => self.clients.claim())
   );
 });
