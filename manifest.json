@@ -9,20 +9,8 @@
   "orientation": "portrait",
   "icons": [
     {
-<<<<<<< HEAD
       "src": "img/20057044_4200_1_06.png",
       "sizes": "192x192",
-=======
-      "purpose": "maskable",
-      "sizes": "512x512",
-      "src": "img/pl3j_xpfm_210723.jpg",
-      "type": "image/png"
-    },
-    {
-      "purpose": "any",
-      "sizes": "512x512",
-      "src": "img/pl3j_xpfm_210723.jpg",
->>>>>>> 2ef11a86006512ddf97c1404afef7370521ac0c3
       "type": "image/png"
     }
   ],
