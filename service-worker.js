@@ -5,8 +5,7 @@ self.addEventListener('install', (event) => {
         '/',
         '/index.html',
         '/styles.css',
-        '/fungsi.js',
-        // ...tambahkan file lain yang perlu di-cache
+        '/fungsi.js'
       ]);
     })
   );
